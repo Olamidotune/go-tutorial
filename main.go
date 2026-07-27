@@ -36,11 +36,13 @@ func main() {
 	}
 
 	fizzBuzz()
-	send("Eri", 3)
-	send("Armour", 1)
-	send("Dotun", 0)
-	test("John", 0, freePlan)
-	test("Doe", 6, proPlan)
+
+	getMessageWithRetiresTest("Eri", 3)
+	getMessageWithRetiresTest("Armour", 1)
+	getMessageWithRetiresTest("Dotun", 0)
+
+	getMessageWithRetriesForPlanTest("John", 0, freePlan)
+	getMessageWithRetriesForPlanTest("Doe", 6, proPlan)
 
 	messagesCost := getMessageCost(messages)
 	defer fmt.Println("============================================")
@@ -48,22 +50,13 @@ func main() {
 
 	sumTest(numbers...)
 
-	// getCostByDayTest([]cost{
-	// 	{day: 0, value: 1.0},
-	// 	{day: 1, value: 2.0},
-	// 	{day: 0, value: 3.0},
-	// 	{day: 2, value: 4.0},
-	// })
-
 	getCostByDayTest([]cost{
-		{0, 1.0},
-		{1, 2.0},
-		{1, 3.1},
-		{2, 2.5},
-		{3, 3.6},
-		{3, 2.7},
-		{4, 3.34},
+		{day: 0, value: 1.0},
+		{day: 1, value: 2.0},
+		{day: 0, value: 3.0},
+		{day: 2, value: 4.0},
 	})
+
 }
 
 func fizzBuzz() {
@@ -71,11 +64,10 @@ func fizzBuzz() {
 		if i%3 == 0 && i%5 == 0 {
 			fmt.Printf("%v fizzbuzz\n", i)
 		} else if i%3 == 0 {
-			fmt.Printf("fizz\n")
+			fmt.Printf("fizz %v\n", i)
 		} else if i%5 == 0 {
-			fmt.Printf("buzz\n")
+			fmt.Printf("buzz %v\n", i)
 		}
-
 	}
 }
 
@@ -83,7 +75,7 @@ func getMessageWithRetires() [3]string {
 	return [3]string{"Click here to sign up", "Please click me", "Guy click me na"}
 }
 
-func send(name string, doneAt int) {
+func getMessageWithRetiresTest(name string, doneAt int) {
 	fmt.Printf("Sending to %s...", name)
 	fmt.Println()
 
@@ -102,7 +94,7 @@ func send(name string, doneAt int) {
 
 }
 
-func test(name string, doneAt int, plan string) {
+func getMessageWithRetriesForPlanTest(name string, doneAt int, plan string) {
 	defer fmt.Println("============================================")
 	fmt.Printf("Sending to %s...", name)
 	fmt.Println()
