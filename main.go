@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"slices"
 )
 
 const (
@@ -35,6 +36,20 @@ func main() {
 		12.5,
 	}
 
+	badWords := []string{
+		"Damn",
+		"Crazy",
+		"Ogun Kill You",
+		"Your Papa",
+		"Fuck You",
+		"Mad Boy",
+	}
+
+	msg := []string{
+		"Hello there!",
+		"Good Morning",
+	}
+
 	fizzBuzz()
 
 	getMessageWithRetiresTest("Eri", 3)
@@ -56,6 +71,28 @@ func main() {
 		{day: 0, value: 3.0},
 		{day: 2, value: 4.0},
 	})
+
+	indexForBadWordTest(
+		msg, badWords,
+	)
+
+	msg = []string{
+		"How are you today?",
+		"God bless you",
+	}
+	indexForBadWordTest(
+		msg, badWords,
+	)
+
+	msg = []string{
+		"This",
+		"Mad Boy",
+		"You",
+		"Fuck You",
+	}
+	indexForBadWordTest(
+		msg, badWords,
+	)
 
 }
 
@@ -180,4 +217,28 @@ func getCostByDay(costs []cost) []float64 {
 func getCostByDayTest(costs []cost) {
 	costByDay := getCostByDay(costs)
 	fmt.Printf("cost by day: %v\n", costByDay)
+}
+
+func indexForBadWord(msg []string, badWords []string) int {
+	for i, word := range msg {
+		if slices.Contains(badWords, word) {
+			return i
+		}
+	}
+	return -1
+}
+
+func indexForBadWordTest(msg []string, badWords []string) {
+	i := indexForBadWord(msg, badWords)
+	fmt.Printf("Scanning message: %v for bad words:\n", msg)
+	for _, x := range badWords {
+		fmt.Println(
+			" -",
+			x,
+		)
+
+	}
+	fmt.Printf("Index: %v\n", i)
+	fmt.Println("==================================================================")
+
 }
