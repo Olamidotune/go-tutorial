@@ -94,6 +94,16 @@ func main() {
 		msg, badWords,
 	)
 
+	a := []int{1, 2, 4: 4, 10: 10}
+	fmt.Println(a)
+
+	sliceA := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	sliceB := sliceA[1:5]
+	fmt.Println(sliceB)
+
+	sliceA = append(sliceA, sliceB...)
+	fmt.Println(sliceA)
+
 }
 
 func fizzBuzz() {
