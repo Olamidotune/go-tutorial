@@ -104,6 +104,44 @@ func main() {
 	sliceA = append(sliceA, sliceB...)
 	fmt.Println(sliceA)
 
+	sliceAc := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	sliceBc := sliceA[:5:11]
+
+	fmt.Printf("this is slice A before append: %v, \nthis is slice B before append: %v", sliceAc, sliceBc)
+
+	sliceBc = append(sliceBc, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+	fmt.Println("sliceB length:", len(sliceBc))
+	fmt.Println("sliceB capacity:", cap(sliceBc))
+	fmt.Printf("this is slice A after append: %v, \nthis is slice B after append: %v", sliceAc, sliceBc)
+
+	nameGrade := map[string]int{
+		"John":  90,
+		"Doe":   80,
+		"Jane":  70,
+		"Smith": 60,
+	}
+
+	nameGrade["Eri"] = 100
+	nameGrade["Armour"] = 32
+	nameGrade["Dotun"] = 50
+
+	gradeTrue, exists := nameGrade["Smith"]
+
+	if exists {
+		fmt.Println(gradeTrue)
+	} else {
+		fmt.Println("Key does not exist")
+	}
+
+	secondTermExam := map[string][]int{
+		"John":  {90, 80, 70},
+		"Doe":   {80, 70, 60},
+		"Jane":  {70, 60, 50},
+		"Smith": {60, 50, 40},
+	}
+
+	fmt.Println(secondTermExam["Smith"])
+
 }
 
 func fizzBuzz() {
